@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>clase01.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%F0%9F%90%8D-python-profesional">🐍 Python Profesional</h1>
+<h2 id="cheatsheet--clase-01">Cheatsheet -Clase 01</h2>
+<h2 id="%F0%9F%93%9D-introducci%C3%B3n">📝 Introducción</h2>
+<p>Python es un lenguaje de programación interpretado, de alto nivel y con una sintaxis fácil de leer y escribir. Es ampliamente utilizado en desarrollo web, análisis de datos, inteligencia artificial, automatización y muchas otras áreas.</p>
+<hr>
+<h2 id="%F0%9F%94%AE-caracter%C3%ADsticas-principales-de-python">🔮 Características principales de Python</h2>
+<p>✅ Lenguaje interpretado (no necesita compilación previa).<br>
+✅ Sintaxis clara y sencilla.<br>
+✅ Tipado dinámico (no necesitas definir el tipo de variable).<br>
+✅ Gran comunidad y muchas bibliotecas disponibles.</p>
+<hr>
+<h2 id="%F0%9F%93%85-instalaci%C3%B3n-de-python">📅 Instalación de Python</h2>
+<ol>
+<li>Descarga Python desde <a href="https://www.python.org">https://www.python.org</a></li>
+<li>Instala Python asegurándote de marcar la opción <strong>&quot;Add Python to PATH&quot;</strong>.</li>
+<li>Verifica la instalación ejecutando en la terminal o cmd:<pre class="hljs"><code><div>python --version
+</div></code></pre>
+o en algunos sistemas:<pre class="hljs"><code><div>python3 --version
+</div></code></pre>
+</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%96%A5%EF%B8%8F-instalaci%C3%B3n-de-visual-studio-code">🖥️ Instalación de Visual Studio Code</h2>
+<ol>
+<li>Descarga VS Code desde <a href="https://code.visualstudio.com">https://code.visualstudio.com</a></li>
+<li>Instala VS Code con la configuración por defecto.</li>
+<li>Abre VS Code y ve a la pestaña de <strong>Extensiones</strong> (Ctrl + Shift + X).</li>
+<li>Busca e instala la extensión <strong>Python</strong> de Microsoft.</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%93%82-creaci%C3%B3n-de-un-archivo-python">📂 Creación de un archivo Python</h2>
+<ol>
+<li>Abre VS Code.</li>
+<li>Crea una nueva carpeta para tu proyecto.</li>
+<li>Dentro de la carpeta, crea un nuevo archivo con la extensión <code>.py</code>, por ejemplo: <code>clase01.py</code>.</li>
+<li>Escribe el siguiente código dentro del archivo:<pre class="hljs"><code><div>print(<span class="hljs-string">"Hola Mundo"</span>)
+</div></code></pre>
+</li>
+<li>No olvides guardar el archivo y luego ejecutarlo.</li>
+</ol>
+<hr>
+<h2 id="%F0%9F%94%AC-tu-primer-programa-en-python">🔬 Tu primer programa en Python</h2>
+<p>El clásico <strong>&quot;Hola, Mundo!&quot;</strong> en Python:</p>
+<pre class="hljs"><code><div>print(<span class="hljs-string">"Hola, Mundo!"</span>)
+</div></code></pre>
+<p><strong>Salida:</strong></p>
+<pre class="hljs"><code><div>Hola, Mundo!
+</div></code></pre>
+<hr>
+<h2 id="%E2%9D%8C-corrige-los-bugs">❌ Corrige los Bugs</h2>
+<p>Lamentablemente el siguiente codigo no me funciona.
+Ayudame a Corregirlo:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">print</span> <span class="hljs-string">"Mi nombre es Elio"</span>
+</div></code></pre>
+<p><strong>Salida:</strong></p>
+<pre class="hljs"><code><div>Error!!!
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%8F%86-reto-01">🏆 Reto 01</h2>
+<p>Muestra en la consola el siguiente saludo personalizado:</p>
+<blockquote>
+<p>Soy Elio</p>
+</blockquote>
+<blockquote>
+<p>30 Febrero del 2030</p>
+</blockquote>
+<blockquote>
+<p>Acabo de Terminar la Primera Clase y estoy super emocionado! 🤩
+Nunca imagine que aprender Python seria tan divertido y accesible, 🤯
+Y estoy seguro que pronto me convertire en un programador increible...😎✌️</p>
+</blockquote>
+<hr>
+<p>🏅 <strong>Listo para lo que se viene?</strong> Mañana veremos <strong>variables y tipos de datos</strong>! 🚀</p>
+
+</body>
+</html>
